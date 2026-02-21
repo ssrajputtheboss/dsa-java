@@ -30,7 +30,7 @@ public class MathAlgo {
 
     public static long modInvEuclidean(long x, long mod){
         long[] l = extendedEuclidean(x,mod);
-        return l[0] == -1 ? -1 : (l[1]%mod+mod)%mod;
+        return l[0] != 1 ? -1 : (l[1]%mod+mod)%mod;
     }
 
     public static long gcd(long a, long b){
