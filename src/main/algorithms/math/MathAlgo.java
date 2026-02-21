@@ -120,7 +120,7 @@ public class MathAlgo {
                     x[i] += p[i];
             }
         }
-    return x;
+        return x;
     }
 
     public static long fact(long x){
@@ -162,11 +162,24 @@ public class MathAlgo {
         return x;
     }
     public static long ncr(long n, long r){
-        long num = 1,den = 1;
-        long mn = Math.min(r,n-r) , mx = Math.max(r,n-r);
-        while (n > mx)num*=n--;
-        while (mn>1)den*=mn--;
-        return num/den;
+        if(r == 0 || r == n)return 1;
+        r = Math.min(r, n-r);
+        long ans = n;
+        for(long x=2;x<=r;++x){
+            ans = ans * (n+1- x) / x;
+        }
+        return ans;
+    }
+
+    public static long ncrMod(long n, long r, long mod){
+        if(r == 0 || r == n)return 1;
+        r = Math.min(r, n-r);
+        long ans = n;
+        for(long x=2;x<=r;++x){
+            ans = ans * (n+1- x) / x;
+            ans %= mod;
+        }
+        return ans%mod;
     }
     // n'th catalan
     public static long catalan(int n){
